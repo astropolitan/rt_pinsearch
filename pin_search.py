@@ -6,7 +6,7 @@ Created on Mon Jun 13 17:55:24 2016
 
 PIN_SEARCH.py
 
- enter description...
+ A function to search for PINs, either reading from a file or by inputting individual PINs.
 
 Modification history:
  6/13/16 - began coding
