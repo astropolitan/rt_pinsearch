@@ -36,6 +36,7 @@ Modification history:
  8/10/16  - fixed tax() for new website and removed all uses of tax_info()
  8/12/16  - removed 'b' option for options(), made sqft calculation part of
              sticker info
+ 8/19/16  - changed all implicitly_wait()s to 30 seconds
 """
 
 import sys
@@ -100,11 +101,11 @@ def court(pin_segs):
     """Searches the Cook County Circuit Court website for the given PIN."""
     browser = webdriver.Chrome()
     browser.set_window_position(0, 0)
-    browser.set_window_size(640, 720)
+    browser.set_window_size(640, 720)                         # This changes based on personal computer screen size.
     browser.get("http://12.218.239.52/V2/COUNTY/Default.aspx")
     browser.find_element_by_id(
         'ctl00_ContentPlaceHolder1_PinSearchLinkButton').click()
-    browser.implicitly_wait(15)
+    browser.implicitly_wait(30)
     xpath = '//*[@id="ctl00_ContentPlaceHolder1_PinSearch1_PINTextBox'
     for p in range(5):
         px = xpath + str(p + 1) + '"]'
@@ -147,7 +148,7 @@ def ccrd(pin_segs):
     browser = webdriver.Chrome()
     browser.maximize_window()
     browser.get("http://162.217.184.82/i2/default.aspx")
-    browser.implicitly_wait(4)
+    browser.implicitly_wait(30)
     css = '#SearchFormEx1_PINTextBox'
     for p in range(5):
         new_css = css + str(p)
@@ -171,7 +172,7 @@ def viewer(pin):
     browser.find_element_by_xpath(
         '//*[@id="searchButton"]'
         ).send_keys(Keys.RETURN)
-    browser.implicitly_wait(10)
+    browser.implicitly_wait(30)
     browser.find_element_by_xpath(
         '//*[@id="galleryNode_aerial"]/a/img'
         ).click()
