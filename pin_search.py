@@ -19,7 +19,7 @@ from rt_selenium import create_pin
 from rt_selenium import options
 
 
-filename = 'LakeView0816.txt'                   # Change for every search.
+filename = 'filename.txt'                   # Specify filename for every search.
 
 pin_list = []
 with open(filename) as file:
