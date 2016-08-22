@@ -37,6 +37,7 @@ Modification history:
  8/12/16  - removed 'b' option for options(), made sqft calculation part of
              sticker info
  8/19/16  - changed all implicitly_wait()s to 30 seconds
+ 8/22/16  - added sq ft calculator to add option in menu
 """
 
 import sys
@@ -310,8 +311,14 @@ def options(pin, pin_segs, dash_pin, file=0):
             comb = add_mult(n, bav, bmv)
             tot_av = locale.currency(comb[0], grouping=True)
             tot_mv = locale.currency(comb[1], grouping=True)
+ 
+            sqft = int(input('Square feet: '))
+            psf = comb[1]/sqft
+            price = locale.currency(psf, grouping=True)
+
             print()
             print('================================')
             print('Combined AV:', tot_av)
             print('Combined MV:', tot_mv)
-            print('================================')
+            print()
+            print(price + '/SF')
