@@ -144,12 +144,6 @@ def delinqs(segs):
     for p in range(5):
         box = box_id + str(1 + p)
         browser.find_element_by_id(box).send_keys(segs[p])
-    code = input('Code: ')
-    if len(code) != 5:
-        code = input('Try again: ')
-    browser.find_element_by_id(
-        'ctl00_ctl17_g_0686ce41_28c4_4973_9bc4_3fc9c61345ec_ctl00_txtAnswer'
-        ).send_keys(code, Keys.RETURN)
  
 
 def collc():
