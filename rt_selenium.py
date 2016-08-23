@@ -136,8 +136,6 @@ def tax(segs):
 def delinqs(segs):
     """Searches for tax delinquencies."""
     browser = webdriver.Chrome()
-    browser.set_window_position(0, 0)
-    browser.set_window_size(640, 680)
     browser.get('http://www.cookcountyclerk.com/tsd/delinquenttaxsearch/Pages/'
                 'DelinquentTaxSearch.aspx')
     box_id = 'ctl00_ctl17_g_0686ce41_28c4_4973_9bc4_3fc9c61345ec_ctl00_txtPin'
