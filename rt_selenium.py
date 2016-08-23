@@ -38,6 +38,7 @@ Modification history:
              sticker info
  8/19/16  - changed all implicitly_wait()s to 30 seconds
  8/22/16  - added sq ft calculator to add option in menu
+ 8/23/16  - added delinqs() to options for Delinquent Property Tax Search
 """
 
 import sys
@@ -131,6 +132,25 @@ def tax(segs):
         '//*[@id="PINAddressSearch2_btnPIN2"]'
         ).click()
 
+
+def delinqs(segs):
+    """Searches for tax delinquencies."""
+    browser = webdriver.Chrome()
+    browser.set_window_position(0, 0)
+    browser.set_window_size(640, 680)
+    browser.get('http://www.cookcountyclerk.com/tsd/delinquenttaxsearch/Pages/'
+                'DelinquentTaxSearch.aspx')
+    box_id = 'ctl00_ctl17_g_0686ce41_28c4_4973_9bc4_3fc9c61345ec_ctl00_txtPin'
+    for p in range(5):
+        box = box_id + str(1 + p)
+        browser.find_element_by_id(box).send_keys(segs[p])
+    code = input('Code: ')
+    if len(code) != 5:
+        code = input('Try again: ')
+    browser.find_element_by_id(
+        'ctl00_ctl17_g_0686ce41_28c4_4973_9bc4_3fc9c61345ec_ctl00_txtAnswer'
+        ).send_keys(code, Keys.RETURN)
+ 
 
 def collc():
     """Searches for a corporation or LLC with the ilsos.gov Corporate/LLC
