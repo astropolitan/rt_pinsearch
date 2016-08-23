@@ -267,7 +267,7 @@ def options(pin, pin_segs, dash_pin, file=0):
         choice = input('Choose an option: ')
         if choice == '':
             continue
-        if choice in '0123456789':
+        if choice in '10123456789':
             choice = float(choice)
         if choice == 0:
             ccao(pin)
