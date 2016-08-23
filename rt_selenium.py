@@ -228,11 +228,12 @@ def maps(address):
 
 
 menu = '-----------------------------------------------------\n\
-0: Cook County Assessor       5: Recorder of Deeds\n\
-1: Board of Review            6: Corporate LLC Search \n\
-2: PTAB                       7: Cook Viewer \n\
-3: Circuit Court              8: Buff cards \n\
-4: Property Tax Portal        9: Google Maps \n\
+0: Cook County Assessor       6: Recorder of Deeds \n\
+1: Board of Review            7: Corporate LLC Search \n\
+2: PTAB                       8: Cook Viewer \n\
+3: Circuit Court              9: Buff cards \n\
+4: Property Tax Portal        10: Google Maps \n\
+5: Delinquent Prop Tax Search \n\
 -----------------------------------------------------\n\
 i: sticker info               d: display PIN \n\
 n: new PIN                    a: add new PIN (in file) \n\
@@ -279,15 +280,17 @@ def options(pin, pin_segs, dash_pin, file=0):
         if choice == 4:
             tax(pin_segs)
         if choice == 5:
-            ccrd(pin_segs)
+            delinqs(pin_segs)
         if choice == 6:
+            ccrd(pin_segs)
+        if choice == 7:
             # corp = input('Enter name of corporation or LLC: ')
             collc()
-        if choice == 7:
-            viewer(pin)
         if choice == 8:
-            buffs(pin, pin_segs)
+            viewer(pin)
         if choice == 9:
+            buffs(pin, pin_segs)
+        if choice == 10:
             address = input('Please enter the address: ')
             maps(address)
         if choice == 'i':
