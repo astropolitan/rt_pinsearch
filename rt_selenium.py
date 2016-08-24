@@ -39,6 +39,7 @@ Modification history:
  8/19/16  - changed all implicitly_wait()s to 30 seconds
  8/22/16  - added sq ft calculator to add option in menu
  8/23/16  - added delinqs() to options for Delinquent Property Tax Search
+ 8/24/16  - removed window dimensions for court()
 """
 
 import sys
@@ -69,7 +70,7 @@ def bor(pin_segs, zoom=0):
     """
     browser = webdriver.Chrome()
     browser.set_window_position(0, 0)
-    browser.set_window_size(640, 720)
+    browser.set_window_size(640, 690)                     # This changes based on personal computer screen size.
     browser.get('http://www.cookcountyboardofreview.com/html/decision.php')
     for p in range(5):
         tag = 'PIN' + str(p+1)
@@ -102,8 +103,6 @@ def ptab(dash_pin):
 def court(pin_segs):
     """Searches the Cook County Circuit Court website for the given PIN."""
     browser = webdriver.Chrome()
-    browser.set_window_position(0, 0)
-    browser.set_window_size(640, 720)                         # This changes based on personal computer screen size.
     browser.get("http://12.218.239.52/V2/COUNTY/Default.aspx")
     browser.find_element_by_id(
         'ctl00_ContentPlaceHolder1_PinSearchLinkButton').click()
